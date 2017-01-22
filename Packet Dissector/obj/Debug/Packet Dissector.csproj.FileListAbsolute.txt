@@ -4,3 +4,9 @@ D:\Travaux\ProgSession6\Système d'exploitation 3\Packet Dissector\Packet Dissec
 D:\Travaux\ProgSession6\Système d'exploitation 3\Packet Dissector\Packet Dissector\bin\Debug\Packet Dissector.pdb
 D:\Travaux\ProgSession6\Système d'exploitation 3\Packet Dissector\Packet Dissector\obj\Debug\Packet Dissector.exe
 D:\Travaux\ProgSession6\Système d'exploitation 3\Packet Dissector\Packet Dissector\obj\Debug\Packet Dissector.pdb
+c:\Custom\GitProjects\PacketDissector\Packet Dissector\bin\Debug\Packet Dissector.exe.config
+c:\Custom\GitProjects\PacketDissector\Packet Dissector\obj\Debug\Packet Dissector.exe
+c:\Custom\GitProjects\PacketDissector\Packet Dissector\obj\Debug\Packet Dissector.pdb
+c:\Custom\GitProjects\PacketDissector\Packet Dissector\bin\Debug\Packet Dissector.exe
+c:\Custom\GitProjects\PacketDissector\Packet Dissector\bin\Debug\Packet Dissector.pdb
+c:\Custom\GitProjects\PacketDissector\Packet Dissector\obj\Debug\Packet Dissector.csprojResolveAssemblyReference.cache

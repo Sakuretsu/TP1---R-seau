@@ -43,10 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArpPacketSegment.cs" />
     <Compile Include="EthernetPacketSegment.cs" />
+    <Compile Include="Ipv4PacketSegment.cs" />
     <Compile Include="Layer2PacketSegment.cs" />
+    <Compile Include="Layer3PacketSegment.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="PacketDissectionHelper.cs" />
+    <Compile Include="PacketSegment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,7 +1,6 @@
 ﻿namespace Packet_Dissector
 {
-    abstract class Layer2PacketSegment
+    abstract class Layer2PacketSegment : PacketSegment
     {
-        abstract public string ToString();
     }
 }
