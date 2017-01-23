@@ -7,7 +7,7 @@ namespace Packet_Dissector
         public const int MAC_ADDRESS_BYTE_LENGTH = 6;
         public const int IPV4_ADDRESS_BYTE_LENGTH = 4;
         public const int PROTOCOL_BYTE_LENGTH = 2;
-        public const int OPCODE_BYTE_LENGTH = 2;
+        public const int SHORT_BYTE_LENGTH = 2;
 
         public static string GetMacAddressFromBytes(byte[] packet, ref uint startIndex)
         {
@@ -44,14 +44,13 @@ namespace Packet_Dissector
 
         public static ushort BytesToShort(byte[] packet, ref uint startIndex)
         {
-            ushort convertedValue = 0;
             byte[] shortInArray = new byte[2];
             Array.Copy(packet, startIndex, shortInArray, 0, PROTOCOL_BYTE_LENGTH);
             if (BitConverter.IsLittleEndian)
             {
                 Array.Reverse(shortInArray);
             }
-            startIndex += OPCODE_BYTE_LENGTH;
+            startIndex += SHORT_BYTE_LENGTH;
             return (ushort)BitConverter.ToInt16(shortInArray, 0);
         }
     }

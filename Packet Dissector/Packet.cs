@@ -22,7 +22,7 @@ namespace Packet_Dissector
             EthernetPacket = new EthernetPacketSegment(packetData);
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return EthernetPacket.ToString();
         }

@@ -6,7 +6,7 @@ namespace Packet_Dissector
     {
         static void Main(string[] args)
         {
-            Packet packet = new Packet(@"../../PacketsToRead/extract8");
+            Packet packet = new Packet(@"../../PacketsToRead/extract12");
             Console.Write(packet.ToString());
             Console.ReadLine();
         }

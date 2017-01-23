@@ -48,11 +48,13 @@
     <Compile Include="Ipv4PacketSegment.cs" />
     <Compile Include="Layer2PacketSegment.cs" />
     <Compile Include="Layer3PacketSegment.cs" />
+    <Compile Include="Layer4PacketSegment.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="PacketDissectionHelper.cs" />
     <Compile Include="PacketSegment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UdpPacketSegment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

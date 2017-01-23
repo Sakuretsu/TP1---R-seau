@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 namespace Packet_Dissector
 {
-    class Ipv4PacketSegment :Layer3PacketSegment
+    class Ipv4PacketSegment : Layer3PacketSegment
     {
         private int headerLength;
 
@@ -18,7 +17,11 @@ namespace Packet_Dissector
 
         private const int LENGTH_STARTING_BYTE = 2;
         //Taille en octet d'un short = 2
-        private const int BYTES_BETEWEEN_LENGTH_AND_TTL = 8 - LENGTH_STARTING_BYTE - 2;
+        private const int BYTES_BETEWEEN_LENGTH_AND_TTL = 8 - LENGTH_STARTING_BYTE -2;
+
+        private const int HEADER_CHECKSUM_BYTE_LENGTH = 2;
+
+        private Layer4PacketSegment layer4PacketSegment;
 
         public Ipv4PacketSegment(byte[] packet, uint startingPoint)
         {
@@ -37,17 +40,36 @@ namespace Packet_Dissector
             timeToLive = packet[startingPoint];
             startingPoint++;
             protocolLayer4 = packet[startingPoint].ToString();
-            startingPoint++;
+            startingPoint += HEADER_CHECKSUM_BYTE_LENGTH + 1;
             sourceIP = PacketDissectionHelper.GetIpv4AddressFromBytes(packet, ref startingPoint);
             destinationIP += PacketDissectionHelper.GetIpv4AddressFromBytes(packet, ref startingPoint);
+            startingPoint = (uint)(startingPointBeforeIncreasing + headerLength * 4);
+            if (protocolLayer4 == "17") 
+            {
+                layer4PacketSegment = new UdpPacketSegment(packet, startingPoint);
+            }
+            else if (protocolLayer4 == "6")
+            {
+
+            }
         }
 
         public override string ToString()
         {
-            return "Header Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: " 
-                   + dataLength.ToString() + "\n" + "Time-To-Live: " + timeToLive.ToString() + "\n" 
-                   + "Protocole(Layer 4): " + protocolLayer4 + "\n" + "Source IP: " + sourceIP + "\n" + "Destination IP " 
-                   + destinationIP + "\n";
+            if (layer4PacketSegment != null)
+            {
+                return "Header Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: "
+                       + dataLength.ToString() + "\n" + "Time-To-Live: " + timeToLive.ToString() + "\n"
+                       + "Protocole(Layer 4): " + protocolLayer4 + "\n" + "Source IP: " + sourceIP + "\n" + "Destination IP "
+                       + destinationIP + "\n" + layer4PacketSegment.ToString();
+            }
+            else
+            {
+                return "Header Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: "
+                       + dataLength.ToString() + "\n" + "Time-To-Live: " + timeToLive.ToString() + "\n"
+                       + "Protocole(Layer 4): " + protocolLayer4 + "\n" + "Source IP: " + sourceIP + "\n" + "Destination IP "
+                       + destinationIP + "\n";
+            }
         }
     }
 }
