@@ -26,7 +26,9 @@
 
         public override string ToString()
         {
-            return "Sender MAC: " + this.senderMacAddress + "\n" + "Sender IP: " + this.senderIPAddress + "\n" + "Target MAC: " + this.targetMacAddress + "\n" + "Target IP: " + this.targetIPAddress + "\n" + "Protocol Type: " + this.opCode.ToString() + "\n";
+            return "Address Resolution Protocol\nSender MAC: " + senderMacAddress + "\n" + "Sender IP: " + senderIPAddress 
+                   + "\n" + "Target MAC: " + targetMacAddress + "\n" + "Target IP: " + targetIPAddress 
+                   + "\n" + "Protocol Type: " + opCode.ToString() + "\n";
         }
     }
 }

@@ -18,19 +18,22 @@
             destinationPort = PacketDissectionHelper.BytesToShort(packet, ref startingPoint);
             sequenceNumber = PacketDissectionHelper.BytesToInt(packet, ref startingPoint);
             acknowledgementNumber = PacketDissectionHelper.BytesToInt(packet, ref startingPoint);
+            protocolNameLayer7 = PacketDissectionHelper.DetermineLayer7Identity(sourcePort, destinationPort);
         }
 
         public override string ToString()
         {
-            if (protocolNameLayer7 != null)
+            if (protocolNameLayer7 != null && protocolNameLayer7 != string.Empty)
             {
-                return "Source Port: " + sourcePort.ToString() + "\n" + "Destination Port: " + destinationPort.ToString()
+                return "Transfer Control Protocol\nSource Port: " + sourcePort.ToString() + "\n" + "Destination Port: " + destinationPort.ToString()
                        + "\n" + "Sequence Number: " + sequenceNumber.ToString() + "\n" + "Acknowledgement Number: " + acknowledgementNumber.ToString()
                        + "\n" + "Protocole(Layer 7): " + protocolNameLayer7 + "\n";
             }
             else
             {
-                return "";
+                return "Transfer Control Protocol\nSource Port: " + sourcePort.ToString() + "\n" + "Destination Port: " + destinationPort.ToString()
+                       + "\n" + "Sequence Number: " + sequenceNumber.ToString() + "\n" + "Acknowledgement Number: " + acknowledgementNumber.ToString()
+                       + "\n";
             }
         }
     }

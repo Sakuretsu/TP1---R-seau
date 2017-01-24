@@ -35,13 +35,13 @@
         { 
             if (layer3PacketSegment == null)
             {
-                return "MAC Destination: " + destinationMACAddress + "\n" + "MAC Source: " + sourceMACAddress
+                return "Ethernet Packet\nMAC Destination: " + destinationMACAddress + "\n" + "MAC Source: " + sourceMACAddress
                            + "\n" + "Protocol Type: " + layer3Protocol + "\n";
             }
             else
             {
-                return "MAC Destination: " + destinationMACAddress + "\n" + "MAC Source: " + sourceMACAddress
-                           + "\n" + "Protocol Type: " + layer3Protocol + "\n" + layer3PacketSegment.ToString();
+                return "Ethernet Packet\nMAC Destination: " + destinationMACAddress + "\n" + "MAC Source: " + sourceMACAddress
+                           + "\n" + "Protocol Type: " + layer3Protocol + "\n" + layer3PacketSegment.ToString() + "\n";
             }
         }
     }

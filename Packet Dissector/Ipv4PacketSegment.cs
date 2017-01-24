@@ -50,7 +50,7 @@ namespace Packet_Dissector
             }
             else if (protocolLayer4 == "6")
             {
-
+                layer4PacketSegment = new TcpPacketSegment(packet, startingPoint);
             }
         }
 
@@ -58,14 +58,14 @@ namespace Packet_Dissector
         {
             if (layer4PacketSegment != null)
             {
-                return "Header Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: "
+                return "Internet Protocol version 4\nHeader Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: "
                        + dataLength.ToString() + "\n" + "Time-To-Live: " + timeToLive.ToString() + "\n"
                        + "Protocole(Layer 4): " + protocolLayer4 + "\n" + "Source IP: " + sourceIP + "\n" + "Destination IP "
-                       + destinationIP + "\n" + layer4PacketSegment.ToString();
+                       + destinationIP + "\n" + layer4PacketSegment.ToString() + "\n";
             }
             else
             {
-                return "Header Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: "
+                return "Internet Protocol version 4\nHeader Lenght: " + headerLength.ToString() + "\n" + "Data Lenght: "
                        + dataLength.ToString() + "\n" + "Time-To-Live: " + timeToLive.ToString() + "\n"
                        + "Protocole(Layer 4): " + protocolLayer4 + "\n" + "Source IP: " + sourceIP + "\n" + "Destination IP "
                        + destinationIP + "\n";

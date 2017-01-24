@@ -10,6 +10,7 @@ namespace Packet_Dissector
         public const int SHORT_BYTE_LENGTH = 2;
         public const int INT_BYTE_LENGTH = 4;
 
+
         public static string GetMacAddressFromBytes(byte[] packet, ref uint startIndex)
         {
             string macAddress = "";
@@ -54,8 +55,6 @@ namespace Packet_Dissector
             startIndex += SHORT_BYTE_LENGTH;
             return (ushort)BitConverter.ToInt16(shortInArray, 0);
         }
-
-
         public static ushort BytesToInt(byte[] packet, ref uint startIndex)
         {
             byte[] intInArray = new byte[INT_BYTE_LENGTH];
@@ -66,6 +65,40 @@ namespace Packet_Dissector
             }
             startIndex += INT_BYTE_LENGTH;
             return (ushort)BitConverter.ToInt32(intInArray, 0);
+        }
+
+        public static string DetermineLayer7Identity(ushort sourcePort, ushort destinationPort)
+        {
+            string protocolNameLayer7 = "";
+            if ((sourcePort == 68 && destinationPort == 67) || (sourcePort == 67 && destinationPort == 68))
+            {
+                protocolNameLayer7 = "DHCP";
+            }
+            else if (sourcePort == 53 || destinationPort == 53)
+            {
+                protocolNameLayer7 = "DNS";
+            }
+            else if (sourcePort == 21 || destinationPort == 21)
+            {
+                protocolNameLayer7 = "FTP";
+            }
+            else if (sourcePort == 80 || destinationPort == 80)
+            {
+                protocolNameLayer7 = "HTTP";
+            }
+            else if (sourcePort == 443 || destinationPort == 443)
+            {
+                protocolNameLayer7 = "HTTPS";
+            }
+            else if (sourcePort == 23 || destinationPort == 23)
+            {
+                protocolNameLayer7 = "Telnet";
+            }
+            else if (sourcePort == 123 || destinationPort == 23)
+            {
+                protocolNameLayer7 = "NTP";
+            }
+            return protocolNameLayer7;
         }
     }
 }
